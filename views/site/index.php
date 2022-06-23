@@ -7,7 +7,7 @@ $this->title = 'Ellies Order and Tracking System';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Ellies Bloemfontein</h1>
+        <h1>Ellies Bloemfontein.</h1>
 
         <p class="lead">Ellies Order and Tracking System</p>
         

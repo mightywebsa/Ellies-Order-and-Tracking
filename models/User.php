@@ -41,9 +41,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'company', 'user_level', 'user_group', 'department', 'user_manager', 'manger_email'], 'required'],
-            [['user_level', 'user_group', 'department'], 'integer'],
-            [['username', 'first_name', 'last_name'], 'string', 'max' => 50],
+            [['username', 'company', 'user_level', 'user_group', 'department', 'user_manager', 'manger_email', 'user_email'], 'required'],
+            [['user_level', 'user_group', ], 'integer'],
+            [['username', 'first_name', 'last_name', 'department'], 'string', 'max' => 50],
             [['password_hash', 'auth_key', 'password_reset_token', 'user_manager', 'manger_email'], 'string', 'max' => 255],
             [['company'], 'string', 'max' => 25],
             [['username'], 'unique'],
@@ -67,6 +67,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'user_level' => 'User Level',
             'user_group' => 'User Group',
             'department' => 'Department',
+            'user_email' => 'Email Address',
             'user_manager' => 'User Manager',
             'manger_email' => 'Manger Email',
         ];
