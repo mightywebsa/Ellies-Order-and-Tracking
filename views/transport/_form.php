@@ -26,7 +26,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fl_trans_code')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fl_trans_active')->textInput() ?>
+    <?= $form->field($model, 'fl_trans_active')->dropDownList([1 => 'Yes',
+        0 => 'No',
+        ])
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

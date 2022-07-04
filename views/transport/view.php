@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Transport */
 
-$this->title = $model->fl_trans_id;
-$this->params['breadcrumbs'][] = ['label' => 'Transports', 'url' => ['index']];
+$this->title = $model->fl_trans_name;
+$this->params['breadcrumbs'][] = ['label' => 'Transport', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -37,7 +37,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'fl_trans_fax',
             'fl_trans_cell',
             'fl_trans_code',
-            'fl_trans_active',
+            [                
+                'label' => 'Active',
+                'attribute' => 'fl_trans_active',
+                'value' => function($model){
+                return $model->fl_trans_active == 1 ? 'Yes':'No';
+                },                
+                'format' => 'raw',
+            ],
         ],
     ]) ?>
 

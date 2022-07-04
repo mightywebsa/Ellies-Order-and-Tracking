@@ -48,15 +48,15 @@ class Transport extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'fl_trans_id' => 'Fl Trans ID',
-            'fl_trans_name' => 'Fl Trans Name',
-            'fl_trans_addr1' => 'Fl Trans Addr1',
-            'fl_trans_addr2' => 'Fl Trans Addr2',
-            'fl_trans_phone' => 'Fl Trans Phone',
-            'fl_trans_fax' => 'Fl Trans Fax',
-            'fl_trans_cell' => 'Fl Trans Cell',
-            'fl_trans_code' => 'Fl Trans Code',
-            'fl_trans_active' => 'Fl Trans Active',
+            'fl_trans_id' => 'Transport ID',
+            'fl_trans_name' => 'Transport Name',
+            'fl_trans_addr1' => 'Address 1',
+            'fl_trans_addr2' => 'Address 2',
+            'fl_trans_phone' => 'Phone No',
+            'fl_trans_fax' => 'Fax No',
+            'fl_trans_cell' => 'Mobile No',
+            'fl_trans_code' => 'Area Code',
+            'fl_trans_active' => 'Active',
         ];
     }
 }

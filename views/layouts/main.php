@@ -61,7 +61,7 @@ AppAsset::register($this);
          */ 
         
         $menuItems[] = ['label' => 'Reports', 'url' => ['#'],'items' => [
-                //['label' => 'Attendance', 'url' => ['#'],],
+                ['label' => 'Equipment', 'url' => ['/reports/equipment'],],
                 //['label' => 'Follow Ups', 'url' => ['/reports/followups'],],
                 //['label' => 'Follow Up Detail', 'url' => ['/reports/followupdetails'],],
                 //['label' => 'JIM Track', 'url' => ['#'],]                
@@ -75,6 +75,7 @@ AppAsset::register($this);
          */
         $menuItems[] = ['label' => 'Admin', 'url' => ['#'],'items' => [                              
                         ['label' => 'Customers','url' => ['/customers/index'],],
+                        ['label' => 'Reps','url' => ['/reps/index'],],
                         ['label' => 'Transport','url' => ['/transport/index'],],
                         ['label' => 'Store Staff','url' => ['/store-personnel/index'],],
             ]];
@@ -83,16 +84,17 @@ AppAsset::register($this);
         /*
          * If the user is mightyweb then give some extra menu items, I need to learn RBAC properly!
          */
-        if(Yii::$app->user->identity->username === 'mightyweb'){
+        if(Yii::$app->user->identity->user_level === 0){
             $menuItems[] = ['label' => 'System', 'url' => ['#'],'items' => [
                 ['label' => 'Gii','url' => ['/gii'],],
+                ['label' => 'Hardware','url' => ['/equipment/index'],],
                 ['label' => 'Users','url' => ['/user/index'],],
             ],];
         }
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->first_name . ')',
+                'Logout (' . Yii::$app->user->identity->first_name.')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

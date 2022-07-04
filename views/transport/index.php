@@ -24,18 +24,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'fl_trans_id',
+            //'fl_trans_id',
             'fl_trans_name',
             'fl_trans_addr1:ntext',
-            'fl_trans_addr2:ntext',
+            //'fl_trans_addr2:ntext',
             'fl_trans_phone',
             //'fl_trans_fax',
-            //'fl_trans_cell',
+            'fl_trans_cell',
             //'fl_trans_code',
             //'fl_trans_active',
-
+            [                
+                'label' => 'Active',
+                'attribute' => 'fl_trans_active',
+                'value' => function($model){
+                return $model->fl_trans_active == 1 ? 'Yes':'No';
+                },                
+                'format' => 'raw',
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

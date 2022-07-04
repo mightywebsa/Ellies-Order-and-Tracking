@@ -29,7 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
             //'fl_sto_id',
             'fl_sto_name',
             'fl_sto_position',            
-            'fl_sto_active',
+            [                
+                'label' => 'Active',
+                'attribute' => 'fl_sto_active',
+                'value' => function($model){
+                return $model->fl_sto_active == 1 ? 'Yes':'No';
+                },                
+                'format' => 'raw',
+            ],
             
             ['class' => 'yii\grid\ActionColumn'],
         ],

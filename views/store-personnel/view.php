@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'fl_sto_position',            
             [
                 'attribute' => 'Active',
-                'value' => (($model->fl_sto_active ==1) ? "Active":'Not Active'),
+                'value' => (($model->fl_sto_active ==1) ? "Yes":'No'),
             ],
         ],
     ]) ?>

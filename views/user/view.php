@@ -30,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'username',
-            'password_hash',
-            'auth_key',
-            'password_reset_token',
+            //'id',            
+            //'password_hash',
+            //'auth_key',
+            //'password_reset_token',
             'first_name',
             'last_name',
+            'username',
             'company',
             'user_level',
             'user_group',
