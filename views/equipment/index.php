@@ -37,11 +37,22 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],            
-            'equipModel',
+            [
+                'label' => 'Model',
+                'attribute' => 'equipModel',
+                'format' => 'raw',
+                'value' => function($data){
+                    $url = "/equipment/view?id=".$data->equipId;
+                    return Html::a($data->equipModel,$url);
+                },
+                
+            ],
+            
             'equipBrand',
             'equipType',
             'equipSerial',
-            'equipStatus',                      
+            'equipStatus', 
+            'equipPCName',
             'equipUser',            
             [
               'attribute' =>  'equipAdded',

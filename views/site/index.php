@@ -16,6 +16,7 @@ $this->title = 'Ellies Order and Tracking System';
     <div class="body-content">
 
         <div class="row">
+            <p>Please log in to access the portal.</p>
           <!--  <div class="col-lg-4">
                 <h2>Heading</h2>
 
