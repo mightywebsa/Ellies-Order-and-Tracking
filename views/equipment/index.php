@@ -53,7 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'equipSerial',
             'equipStatus', 
             'equipPCName',
-            'equipUser',            
+            'equipUser',    
+            'equipAssetTag',
             [
               'attribute' =>  'equipAdded',
               'format' =>   ['date', 'php:Y-m-d']

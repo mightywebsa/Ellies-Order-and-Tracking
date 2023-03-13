@@ -18,7 +18,7 @@ class EquipmentSearch extends Equipment
     {
         return [
             [['equipId'], 'integer'],
-            [['equipType', 'equipBrand', 'equipModel', 'equipCPU', 'equipRAM', 'equipHDD', 'equipScreen', 'equipPCName', 'equipUser','equipStatus','equipSerial'], 'safe'],
+            [['equipType', 'equipBrand', 'equipModel', 'equipCPU', 'equipRAM', 'equipHDD', 'equipScreen', 'equipPCName', 'equipUser','equipStatus','equipSerial', 'equipAssetTag'], 'safe'],
         ];
     }
 
@@ -71,7 +71,8 @@ class EquipmentSearch extends Equipment
             ->andFilterWhere(['like', 'equipScreen', $this->equipScreen])                
             ->andFilterWhere(['like', 'equipPCName', $this->equipPCName])                
             ->andFilterWhere(['like', 'equipUser', $this->equipUser])
-            ->andFilterWhere(['like', 'equipStatus', $this->equipStatus]);
+            ->andFilterWhere(['like', 'equipStatus', $this->equipStatus])
+            ->andFilterWhere(['like', 'equipAssetTag', $this->equipAssetTag]);
 
         return $dataProvider;
     }
