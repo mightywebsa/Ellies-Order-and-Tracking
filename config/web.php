@@ -25,6 +25,10 @@ $config = [
     ],
     
     'components' => [
+        'formatter' => [
+                'thousandSeparator' => ' ',
+                'currencyCode' => 'R',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'Gp2Xf9FC60iO9wvLmnni8kOz65spID_x',
@@ -74,14 +78,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','197.245.178.150'],
+        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','41.193.228.66'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','197.245.178.150'],
+        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','41.193.228.66'],
     ];
 }
 

@@ -49,6 +49,12 @@ AppAsset::register($this);
     } else {
         
         $menuItems[] = ['label' => 'Dashboard', 'url' => ['/dashboard/index']];
+        $menuItems[] = ['label' => 'Picking', 'url' => ['#'],'items' => [ 
+            ['label' => 'Picking Slips','url' => ['/picking/index'],],
+            ['label' => 'Create','url' => ['/picking/create'],],
+            ['label' => 'Control','url' => ['/control/create'],],
+        
+        ]];
         
         $menuItems[] = ['label' => 'On The Dot', 'url' => ['#'],'items' => [ 
             ['label' => 'List Entries','url' => ['/otd/index'],],

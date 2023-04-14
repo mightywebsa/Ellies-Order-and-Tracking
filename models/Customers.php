@@ -76,4 +76,11 @@ class Customers extends \yii\db\ActiveRecord
             'fl_cust_pref_delivery' => 'Preferred Delivery',
         ];
     }
+    public static function getCustomers()
+    {
+	return self::find()->select('fl_customer_name')
+                ->where(['fl_cust_active'=>'on'])
+                ->indexBy('fl_customer_id')
+                ->column();
+    }
 }
