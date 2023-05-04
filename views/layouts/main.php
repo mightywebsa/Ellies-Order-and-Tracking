@@ -56,6 +56,13 @@ AppAsset::register($this);
         
         ]];
         
+        $menuItems[] = ['label' => 'Tripsheets', 'url' => ['#'],'items' => [ 
+            ['label' => 'Log a trip','url' => ['/rep-tripsheets/create'],],
+            ['label' => 'My Trips','url' => ['/rep-tripsheets/index'],],
+            ['label' => 'Weekly Summary','url' => ['/rep-tripsheets/summary', 'date' => date('Y-m-d',time())],],
+        
+        ]];
+        
         $menuItems[] = ['label' => 'On The Dot', 'url' => ['#'],'items' => [ 
             ['label' => 'List Entries','url' => ['/otd/index'],],
         
@@ -67,10 +74,7 @@ AppAsset::register($this);
          */ 
         
         $menuItems[] = ['label' => 'Reports', 'url' => ['#'],'items' => [
-                ['label' => 'Equipment', 'url' => ['/reports/equipment'],],
-                //['label' => 'Follow Ups', 'url' => ['/reports/followups'],],
-                //['label' => 'Follow Up Detail', 'url' => ['/reports/followupdetails'],],
-                //['label' => 'JIM Track', 'url' => ['#'],]                
+                ['label' => 'Equipment', 'url' => ['/reports/equipment'],],                                
             ]];
         
         /*
@@ -80,6 +84,7 @@ AppAsset::register($this);
          * general users.
          */
         $menuItems[] = ['label' => 'Admin', 'url' => ['#'],'items' => [                              
+                        ['label' => 'Areas','url' => ['/cities/index'],],
                         ['label' => 'Customers','url' => ['/customers/index'],],
                         ['label' => 'Reps','url' => ['/reps/index'],],
                         ['label' => 'Transport','url' => ['/transport/index'],],

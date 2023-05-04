@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
+use app\models\PasswordResetRequestForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -136,4 +137,25 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+    
+    public function actionPasswordResetRequest()
+{
+    $model = new PasswordResetRequestForm();
+
+    if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->sendEmail()) {
+            Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
+
+            return $this->goHome();
+        } else {
+            Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+        }
+    }
+
+    return $this->render('passwordResetRequest', [
+        'model' => $model,
+    ]);
+}
+
+    
 }

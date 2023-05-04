@@ -32,10 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
         ]) ?>
 
+       <div class="my-1 mx-0" style="color:#999;">
+            If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+            <br>
+            Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+        </div>
+
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-            </div>
+            <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
         </div>
 
     <?php ActiveForm::end(); ?>

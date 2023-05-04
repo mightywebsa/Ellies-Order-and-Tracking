@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'adminEmail' => 'adrian@mightyweb.co.za',
+    'adminEmail' => 'webmaster@elliesblm.co.za',
+    'supportEmail' => 'webmaster@elliesblm.co.za',
     'senderEmail' => 'noreply@elliesblm.co.za',
-    'senderName' => 'Ellies Order and Track System',
+    'senderName' => 'Ellies Portal',
+    'user.passwordResetTokenExpire' => 3600,
+    'user.passwordMinLength' => 8,
 ];

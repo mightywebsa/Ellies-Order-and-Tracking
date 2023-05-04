@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\NotSupportedException;
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Security;
 use yii\web\IdentityInterface;
@@ -27,12 +28,22 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    const STATUS_DELETED = 0;
+    const STATUS_INACTIVE = 9;
+    const STATUS_ACTIVE = 10;
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
         return 'user';
+    }
+    
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
     }
 
     /**
@@ -44,9 +55,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['username', 'company', 'user_level', 'user_group', 'department', 'user_manager', 'manger_email', 'user_email'], 'required'],
             [['user_level', 'user_group', ], 'integer'],
             [['username', 'first_name', 'last_name', 'department'], 'string', 'max' => 50],
-            [['password_hash', 'auth_key', 'password_reset_token', 'user_manager', 'manger_email'], 'string', 'max' => 255],
+            [['password_hash', 'auth_key', 'user_manager', 'manger_email'], 'string', 'max' => 255],
             [['company'], 'string', 'max' => 25],
             [['username'], 'unique'],
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
     }
 
@@ -60,7 +73,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'username' => 'Username',
             'password_hash' => 'Password Hash',
             'auth_key' => 'Auth Key',
-            'password_reset_token' => 'Password Reset Token',
             'first_name' => 'First Name',
             'last_name' => 'Last Name',
             'company' => 'Company',
@@ -129,6 +141,23 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'password_reset_token' => $token
         ]);
     }
+    
+     /**
+     * Finds out if password reset token is valid
+     *
+     * @param string $token password reset token
+     * @return bool
+     */
+    public static function isPasswordResetTokenValid($token)
+    {
+        if (empty($token)) {
+            return false;
+        }
+
+        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+        return $timestamp + $expire >= time();
+    }
 
     /**
      * @inheritdoc
@@ -172,7 +201,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function setPassword($password)
     {
-        $this->password_hash = Security::generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);        
     }
 
     /**
@@ -180,15 +209,14 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public function generateAuthKey()
     {
-        $this->auth_key = Security::generateRandomKey();
+        $this->auth_key = Yii::$app->security->generateRandomString();
     }
-
     /**
      * Generates new password reset token
      */
     public function generatePasswordResetToken()
     {
-        $this->password_reset_token = Security::generateRandomKey() . '_' . time();
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
     /**

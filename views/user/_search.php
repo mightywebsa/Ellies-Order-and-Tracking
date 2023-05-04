@@ -13,33 +13,25 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
+    ]); ?>    
 
     <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'password_hash') ?>
+    <?php  echo $form->field($model, 'first_name') ?>
 
-    <?= $form->field($model, 'auth_key') ?>
+    <?php  echo $form->field($model, 'last_name') ?>
 
-    <?= $form->field($model, 'password_reset_token') ?>
+    <?php  echo $form->field($model, 'company') ?>
 
-    <?php // echo $form->field($model, 'first_name') ?>
+    <?php  echo $form->field($model, 'user_level') ?>
 
-    <?php // echo $form->field($model, 'last_name') ?>
+    <?php  echo $form->field($model, 'user_group') ?>
 
-    <?php // echo $form->field($model, 'company') ?>
+    <?php  echo $form->field($model, 'department') ?>
 
-    <?php // echo $form->field($model, 'user_level') ?>
+    <?php  echo $form->field($model, 'user_manager') ?>
 
-    <?php // echo $form->field($model, 'user_group') ?>
-
-    <?php // echo $form->field($model, 'department') ?>
-
-    <?php // echo $form->field($model, 'user_manager') ?>
-
-    <?php // echo $form->field($model, 'manger_email') ?>
+    <?php  echo $form->field($model, 'manger_email') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

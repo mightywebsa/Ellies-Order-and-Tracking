@@ -65,4 +65,8 @@ class Equipment extends \yii\db\ActiveRecord
             'equipAssetTag' => 'Ellies Asset Tag',
         ];
     }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
 }

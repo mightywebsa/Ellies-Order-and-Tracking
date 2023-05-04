@@ -8,6 +8,7 @@ use app\models\EquipmentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * EquipmentController implements the CRUD actions for Equipment model.
@@ -27,17 +28,30 @@ class EquipmentController extends Controller
                 ],
             ],
             'access' => [
-                        'class' => \yii\filters\AccessControl::className(),
-                        'only' => ['index','create','update','view'],
-                        'rules' => [
-                            // allow authenticated users
-                            [
-                                'allow' => true,
-                                'roles' => ['@'],
-                            ],
-                            // everything else is denied
-                        ],
+                'class' => AccessControl::className(),                
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['login', 'signup'],
+                        'roles' => ['?'],
                     ],
+                    [
+//                        'allow' => true,
+//                        'actions' => ['index','cities','summary','create'],
+//                        'roles' => ['@'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['index','create','update', 'delete',  'view'],
+                        'matchCallback' => function ($rule, $action){
+                            $id = Yii::$app->request->get('id');
+                            $model = $this->findModel($id);
+                            return $model->user_id == Yii::$app->user->id;
+                        },
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
     }
 

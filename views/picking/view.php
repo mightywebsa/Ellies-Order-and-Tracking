@@ -18,7 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Control', ['control', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Admin', ['admin', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Store', ['store', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Dispatch', ['dispatch', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Deliveries', ['delivery', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('POD', ['pod', 'id' => $model->fl_ps_id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->fl_ps_id], [
             'class' => 'btn btn-danger',
             'data' => [

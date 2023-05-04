@@ -7,7 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'name' => 'Ellies Order and Tracking',
+    'name' => 'Ellies Portal',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -28,6 +28,7 @@ $config = [
         'formatter' => [
                 'thousandSeparator' => ' ',
                 'currencyCode' => 'R',
+                'timeZone' => 'Africa/Johannesburg'
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -43,12 +44,12 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
+        'mailer' => [            
+            'class' => 'yii\symfonymailer\Mailer',
+            'useFileTransport' => false,
+            'transport' => [
+                'dsn' => 'smtp://webmaster@elliesblm.co.za:5gN7mD1kB@mail.elliesblm.co.za:465',
+            ],       
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -78,14 +79,14 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','41.193.228.66'],
+        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','102.39.47.75'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','41.193.228.66'],
+        'allowedIPs' => ['192.168.8.*','127.0.0.1', '::1','102.39.47.75'],
     ];
 }
 

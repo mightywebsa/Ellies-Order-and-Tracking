@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                'attribute' => 'fl_ps_no',
                'format'=>'raw',
                'value' => function($data){                  
-               $url = Yii::$app->urlManager->createUrl('picking/view').'?id='.$data->fl_ps_id;               
+               $url = Yii::$app->urlManager->createUrl('picking/view').'&id='.$data->fl_ps_id;               
                return Html::a(Html::encode($data->fl_ps_no), $url, ['title' => 'View']);},
                
             ],

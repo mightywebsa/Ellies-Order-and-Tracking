@@ -10,9 +10,11 @@ use yii\widgets\ActiveForm;
 
 <div class="user-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php 
+    
+    $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true,'readOnly' => true]) ?>
+    <?= $form->field($model, 'username')->textInput() ?>
 
     <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
 
@@ -52,11 +54,12 @@ use yii\widgets\ActiveForm;
         'ELSAT' => 'Elsat',
         'Invoicing' => 'Invoicing',
         'Renewable' => 'Renewable',
+        'Sales' => 'Sales',
     ]) ?>
 
     <?= $form->field($model, 'user_manager')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'manger_email')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'manger_email')->textInput(['maxlength' => true, 'email'=>true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

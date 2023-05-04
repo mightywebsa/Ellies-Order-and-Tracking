@@ -24,24 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
-
-            //'id',
+        'responsive'=>true,
+        'hover'=>true,
+        'columns' => [          
             'first_name',
             'last_name',
             'username',
-            'user_email:email',
-            //'password_hash',
-            //'auth_key',
-            //'password_reset_token',            
-            'company',
-            'user_level',
-            'user_group',
+            'user_email:email',            
             'department',
-            'user_manager',
-            'manger_email:email',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
