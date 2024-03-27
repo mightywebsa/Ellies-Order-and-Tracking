@@ -17,7 +17,7 @@ $this->title = 'Ellies Portal';
         <div class="row">
     <?php
         if (Yii::$app->user->isGuest) {
-            echo '<p>Please log in to access the portal.</p>';
+            echo '<p class="lead">Please log in to access the Ellies portal.</p>';
         }
 ?>    
             

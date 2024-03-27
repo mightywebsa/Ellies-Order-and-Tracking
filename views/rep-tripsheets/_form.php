@@ -49,7 +49,8 @@ $customerList = ArrayHelper::map($customers, 'fl_customer_id' ,'fl_customer_name
     
         <?= $form->field($model, 'customer_town')->widget(DepDrop::classname(),
             [
-                'options'=>['id'=>'customer_town'],                
+                'options'=>['id'=>'customer_town',],
+                
                 'pluginOptions'=>[
                     'depends'=>['area'],
                     'placeholder'=>'Select City...',
@@ -61,7 +62,7 @@ $customerList = ArrayHelper::map($customers, 'fl_customer_id' ,'fl_customer_name
         <?= $form->field($model, 'customer_name')->widget(Select2::classname(),
             [
                 'data' => $customerList,
-                'options' => ['placeholder' => 'Select an customer...', 'id' => 'fl_customer_id'],
+                'options' => ['placeholder' => 'Select a customer...', 'id' => 'fl_customer_id'],
                 'pluginOptions' => [
                     'allowClear' => true
                 ],

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use kartik\grid\GridView;
+use app\models\Customers;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RepTripsheetsSearch */
@@ -28,9 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'hover' => true,         
         'panel' => ['type' => 'primary', 'heading' => 'Trips'],
         'toggleDataContainer' => ['class' => 'btn-group mr-2'],
-        'columns' => [ 
-            ['class' => 'yii\grid\SerialColumn'],           
-            'customer_name',
+        'columns' => [                       
+            
+            [
+              'attribute' => 'customer_name',
+              'format' => 'raw',
+              'value' => function($model){
+                $customerName = Customers::findone($model->customer_name)->fl_customer_name;
+                return $customerName;
+              },            
+              
+            ],
             'customer_town',
             'customer_contact',
             'customer_number',

@@ -31,6 +31,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
+    
+    const ROLE_USER = 30;
+    const ROLE_MODERATOR = 20;
+    const ROLE_ADMIN = 10;
     /**
      * {@inheritdoc}
      */
@@ -53,7 +57,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['username', 'company', 'user_level', 'user_group', 'department', 'user_manager', 'manger_email', 'user_email'], 'required'],
-            [['user_level', 'user_group', ], 'integer'],
+            [['user_level', 'user_group', 'role'], 'integer'],
             [['username', 'first_name', 'last_name', 'department'], 'string', 'max' => 50],
             [['password_hash', 'auth_key', 'user_manager', 'manger_email'], 'string', 'max' => 255],
             [['company'], 'string', 'max' => 25],

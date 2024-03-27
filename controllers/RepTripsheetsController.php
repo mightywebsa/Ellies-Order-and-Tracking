@@ -8,7 +8,8 @@ use app\models\RepTripsheetsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+use app\components\AccessRule;
+use app\models\User;
 use DateTime;
 
 
@@ -32,7 +33,7 @@ class RepTripsheetsController extends Controller
             ],
             
             'access' => [
-                'class' => AccessControl::className(),                
+                'class' => \yii\filters\AccessControl::className(),                
                 'rules' => [
                     [
                         'allow' => true,
@@ -42,7 +43,8 @@ class RepTripsheetsController extends Controller
                     [
                         'allow' => true,
                         'actions' => ['index','cities','summary','create'],
-                        'roles' => ['@'],
+                        'roles' => ['@'
+                        ],
                     ],
                     [
                         'allow' => true,
